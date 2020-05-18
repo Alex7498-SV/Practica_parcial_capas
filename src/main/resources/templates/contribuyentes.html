@@ -7,7 +7,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 			
-		<title>mostrar estudiante por llave primaria</title>	
+		<title>Contribuyentes</title>	
 	</head>
 	<body>
 		
@@ -17,17 +17,17 @@
 		    <tr>
 		      <th scope="col">Nombre</th>
 		      <th scope="col">Apellido</th>
-		      <th scope="col">Carnet</th>
-		      <th scope="col">Carrera</th>
+		      <th scope="col">NIT</th>
+		      <th scope="col">Fecha</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <th:block th:each="estudiante, row:${estudiantes}">
+		    <th:block th:each="cont, row:${cont}">
 				<tr>
 				
-					<th th:text="${estudiante.Nombre}"/>
-					<th th:text="${estudiante.Apellido}"/>
-					<th th:text="${estudiante.Carne}"/>
+					<th th:text="${cont.Nombre}"/>
+					<th th:text="${cont.Apellido}"/>
+					<th th:text="${cont.N}"/>
 					<th th:text="${estudiante.Carrera}"/>
 					
 				</tr>

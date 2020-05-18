@@ -16,40 +16,41 @@
 		
 		<nav class="navbar navbar-dark bg-dark">
 		  <span class="navbar-text">
-		   Registro de un nuevo estudiante.
+		   Registro de contribuyentes.
 		  </span>
 		</nav>
 		
 		<div class = "container-fluid" id="formulario">
 		
-			<h3>Ingrese los datos para un nuevo estudiante</h3>
+			<h3>Ingrese los datos para un nuevo contribuyente</h3>
 		
-			<form th:action="@{/guardar}" th:object="${estudiante}" method="post">
+			<form th:action="@{/guardar}" th:object="${contribuyente}" method="post">
 			  <div class="form-row">
-			    <div class="col">
+			    <div class="form-group col-md-6">
 			      <input type="text" class="form-control" placeholder="Nombre"  th:field="*{Nombre}">
 			      <span th:errors="*{Nombre}" style="color:#FF0000"></span>
 			    </div>
-			    <div class="col">
+			    <div class="form-group col-md-6">
 			      <input type="text" class="form-control" placeholder="Apellido"  th:field="*{Apellido}">
 			      <span th:errors="*{Apellido}" style="color:#FF0000"></span>
 			    </div>
 			  </div>
 			   <div class="form-row">
-			    <div class="col">
-			      <input type="text" class="form-control" placeholder="Carnet" th:field="*{Carne}">
-			      <span th:errors="*{Carne}" style="color:#FF0000"></span>
+			    <div class="form-group col-md-6">
+			      <input type="text" class="form-control" placeholder="NIT" th:field="*{Nit}">
+			      <span th:errors="*{Nit}" style="color:#FF0000"></span>
 			    </div>
-			    <div class="col">
-			      <input type="text" class="form-control" placeholder="Carrera"  th:field="*{Carrera}">
-			      <span th:errors="*{Carrera}" style="color:#FF0000"></span>
+			    <div class="form-group col-md-6">
+		    		<select class="form-control" th:field="*{c_importancia.c_importancia}">
+					  <option th:each="impo:${importancia}" th:value="${impo.c_importancia}" th:text="${impo.importancia}"></option>
+					</select>
 			    </div>
 			  </div>
 		  	 <button type="submit" class="btn btn-info">Guardar</button>
 			</form>
 			
 			<form th:action="@{/listado}">
-				<button type="submit" class"btn btn-danger">Ver listado de estudiantes</button>
+				<button type="submit" class="btn btn-danger">Ver listado de Contribuyentes</button>
 			</form>
 			
 		</div>
