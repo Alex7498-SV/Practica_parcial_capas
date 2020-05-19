@@ -18,14 +18,17 @@ import com.capas.dao.ContribuyenteDAO;
 import com.capas.dao.ImportanciaDAO;
 import com.capas.domain.Contribuyente;
 import com.capas.domain.Importancia;
+import com.capas.service.ContribuyenteService;
+import com.capas.service.ImportanciaServiceImpl;
+import com.capas.service.importanciaService;
 
 
 @Controller
 public class MainController {
 	@Autowired
-	private ContribuyenteDAO cDAO;
+	private ContribuyenteService cService;
 	@Autowired
-	private ImportanciaDAO iDAO;
+	private importanciaService iService;
 	
 	@RequestMapping("/inicio")
 	public ModelAndView initMain() {
@@ -35,7 +38,7 @@ public class MainController {
 		List<Importancia> importancias = null;
 		
 		try {
-			importancias = iDAO.findAll();
+			importancias = iService.findAll();
 			mav.addObject("importancia", importancias);
 			mav.addObject("contribuyente", cont);
 			mav.setViewName("index");
@@ -63,9 +66,8 @@ public class MainController {
 			} catch(ParseException ef) {
 				ef.printStackTrace();
 			}
-			
 			cont.setFecha(date);
-			cDAO.insertar(cont);
+			cService.save(cont);
 			mav.setViewName("exito");
 		}
 		else {
@@ -73,7 +75,7 @@ public class MainController {
 			List<Importancia> importancias = null;
 			
 			try {
-				importancias = iDAO.findAll();
+				importancias = iService.findAll();
 				mav.addObject("importancia", importancias);
 				mav.addObject("contribuyente", cont);
 				mav.setViewName("index");
@@ -87,19 +89,22 @@ public class MainController {
 		
 	}
 	
+	
 	@RequestMapping("/listado")
-	public ModelAndView mostrarEstudiantes() {
-		ModelAndView mav = new ModelAndView();
-		List<Contribuyente> contribuyentes= null;
-		try {
-			contribuyentes = cDAO.findAll();
-			mav.addObject("cont", contribuyentes);
+	public ModelAndView mostrar() {
+			ModelAndView mav = new ModelAndView();
+			
 			mav.setViewName("contribuyentes");
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		
+			List<Contribuyente> contribuyentes = null;
+			try {
+				contribuyentes = cService.findAll();
+				mav.addObject("contri", contribuyentes);
+						 
+			} catch(Exception e){
+				e.printStackTrace();
+			}
+			
 		return mav;
 	}
+
 }

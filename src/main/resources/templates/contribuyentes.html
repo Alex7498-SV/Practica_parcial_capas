@@ -18,17 +18,19 @@
 		      <th scope="col">Nombre</th>
 		      <th scope="col">Apellido</th>
 		      <th scope="col">NIT</th>
+		      <th scope="col">Importancia</th>
 		      <th scope="col">Fecha</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <th:block th:each="cont, row:${cont}">
+		    <th:block th:each="cont, row:${contri}">
 				<tr>
 				
 					<th th:text="${cont.Nombre}"/>
 					<th th:text="${cont.Apellido}"/>
-					<th th:text="${cont.N}"/>
-					<th th:text="${estudiante.Carrera}"/>
+					<th th:text="${cont.nit}"/>
+					<th th:text="${cont.c_importancia.importancia}"/>
+					<th th:text="${cont.fecha}"/>
 					
 				</tr>
 			</th:block>

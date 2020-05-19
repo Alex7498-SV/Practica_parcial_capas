@@ -10,7 +10,8 @@ public interface ContribuyenteDAO {
 
 	public List<Contribuyente> findAll() throws DataAccessException;
 	public Contribuyente findOne(Integer code) throws DataAccessException;
-	
 	public void insertar(Contribuyente contri) throws DataAccessException;
+	public void save(Contribuyente contri) throws DataAccessException;
+	public void delete(Integer code) throws DataAccessException;
 	
 }
